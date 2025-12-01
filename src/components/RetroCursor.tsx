@@ -27,27 +27,41 @@ export default function RetroCursor() {
     };
   }, [cursorX, cursorY]);
 
+  const [trailChar, setTrailChar] = useState("");
+
+  useEffect(() => {
+    const chars = "XYZ01_";
+    const interval = setInterval(() => {
+      setTrailChar(chars[Math.floor(Math.random() * chars.length)]);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       {/* Main Block Cursor */}
       <motion.div
-        className="fixed top-0 left-0 w-4 h-8 bg-green-500/50 pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-4 h-8 bg-green-500/80 pointer-events-none z-[9999] mix-blend-difference flex items-center justify-center text-black font-bold text-xs"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           scale: isPointer ? 1.5 : 1,
         }}
-      />
+      >
+        _
+      </motion.div>
 
-      {/* Trailing "Ghost" */}
+      {/* Character Trail */}
       <motion.div
-        className="fixed top-0 left-0 w-4 h-8 border border-green-500/30 pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] text-green-500/50 font-mono text-sm"
         style={{
           x: cursorX,
           y: cursorY,
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.2 }}
-      />
+      >
+        {trailChar}
+      </motion.div>
     </>
   );
 }
