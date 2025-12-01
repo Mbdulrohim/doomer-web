@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Courier_Prime } from "next/font/google";
 import "./globals.css";
+import RetroCursor from "@/components/RetroCursor";
 
 const courierPrime = Courier_Prime({
   weight: ["400", "700"],
@@ -21,8 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${courierPrime.variable} font-mono antialiased bg-black text-gray-300 selection:bg-green-900 selection:text-white`}
+        className={`${courierPrime.variable} font-mono antialiased bg-black text-gray-300 selection:bg-green-900 selection:text-white cursor-none`}
       >
+        <RetroCursor />
         {children}
       </body>
     </html>
