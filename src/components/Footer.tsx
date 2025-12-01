@@ -7,7 +7,7 @@ export default function Footer() {
         <a href="#" className="text-gray-500 hover:text-white transition-colors">
           <Twitter size={24} />
         </a>
-        <a href="#" className="text-gray-500 hover:text-white transition-colors">
+        <a href="https://t.me/doomerctochatgroup" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
           <Send size={24} />
         </a>
       </div>
